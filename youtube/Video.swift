@@ -8,6 +8,8 @@
 import Foundation
 
 struct Video : Decodable{
+    //protocol
+    
     var videoId = ""
     var title = ""
     var description = ""
@@ -16,7 +18,8 @@ struct Video : Decodable{
     
     
     enum CodingKeys : String, CodingKey {
-       //String 쓰는 이유 : json과 이름이 다른 경우를 위해서
+        //enum : 열거형
+        //String 쓰는 이유 : json과 이름이 다른 경우를 위해서
         
         case snippet
         case thumbnails
@@ -32,13 +35,16 @@ struct Video : Decodable{
     }
     
     init (from decoder: Decoder) throws {
+        //init - 열거형 사용, 초기값 세팅
         
         let container = try decoder.container(keyedBy: CodingKeys.self )
+        //self : 모든 인스턴스들이 암시적으로 생성하는 프로퍼티
         
         let snippetContainer = try container.nestedContainer(keyedBy: CodingKeys.self, forKey: .snippet)
         
         //Parse title
         self.title = try snippetContainer.decode(String.self, forKey: .title)
+        //self = this의 느낌
         
         //Parse description
         self.description = try snippetContainer.decode(String.self, forKey: .description)
