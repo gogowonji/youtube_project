@@ -74,10 +74,10 @@
 				E782CDFD26CA4D6100188949 /* LaunchScreen.storyboard */,
 				E782CE0026CA4D6100188949 /* Info.plist */,
 				E782CE0626CA4EC700188949 /* Constants.swift */,
+				E74CC2B726CE7335002BEE0B /* ConstantsTemplate.swift */,
 				E782CE0826CA4ED500188949 /* Video.swift */,
 				E782CE0A26CA4EE600188949 /* Model.swift */,
 				E7054A9F26CD478B00343733 /* Response.swift */,
-				E74CC2B726CE7335002BEE0B /* ConstantsTemplate.swift */,
 			);
 			path = youtube;
 			sourceTree = "<group>";

@@ -7,9 +7,16 @@
 
 import Foundation
 
+protocol ModelDelegate {
+    func videosFetched(_ videos:[Video])
+}
 
 struct Model {
-    func getVideos() {
+    
+    var delegate:ModelDelegate?
+
+        func getVideos() {
+        
         
         //Create a URL object
         let url = URL(string: Constants.API_URL)
@@ -39,7 +46,12 @@ struct Model {
                 //Response.self = value of Response
                 //data! -> !: 암묵적으로 벗겨진 옵셔널 (값이 있다고 가정 nill X)
                 
-                dump(response)
+                //call the "videoFetched" method of the delegate
+                if response.items != nil{
+                    self.delegate?.videosFetched(response.items!)
+                }
+                
+                //dump(response)
             }catch{
                 
             }
