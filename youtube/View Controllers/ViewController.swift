@@ -53,22 +53,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //What data I display
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.VEDIOCELL_ID, for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.VIDEOCELL_ID, for: indexPath) as! VideoTableViewCell
+                
+        //이전에는 viewController가 default였기 때문에 그대로..
+        //let cell = tableView.dequeueReusableCell(withIdentifier: Constants.VIDEOCELL_ID, for: indexPath)
+        //지금은 VideoTableViewCell로 우리가 custom해주었기 때문에 변경해줘야 함
         
         //Configure the cell with the data
-        //Get the title for the video in question
-        let title = self.videos[indexPath.row].title
+        let video = self.videos[indexPath.row]
         
-        cell.textLabel?.text = title
+        cell.setCell(video)
         
         //Return the cell
-        
+        return cell
         
     }
 
     //didSelectRowAt
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        
     }
 
 
